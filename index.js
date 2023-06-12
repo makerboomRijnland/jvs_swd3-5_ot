@@ -12,6 +12,17 @@ function showStudent(student) {
     studentsSection.appendChild(studentArticle);
 }
 
+function loadStudents() {
+    fetch('students.json')
+        .then((response) => response.json())
+        .then((data) => showStudents(data));
+}
+
+function showStudents(students) {
+    for(let student of students) {
+        showStudent(student);
+    }
+}
 
 const testStudent = {
     name: "B. Attyboy",
@@ -19,4 +30,6 @@ const testStudent = {
     group: "LO2E-SWD3"
 };
 
-showStudent(testStudent);
+loadStudents();
+
+// showStudent(testStudent);
