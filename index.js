@@ -16,6 +16,37 @@ function loadStudents() {
     fetch('students.json')
         .then((response) => response.json())
         .then((data) => showStudents(data));
+
+    const ageFilterSelect = document.getElementById('students-filter-age');
+    const groupFilterSelect = document.getElementById('students-filter-group');
+
+    ageFilterSelect.addEventListener('change', filterStudents);
+    groupFilterSelect.addEventListener('change', filterStudents);
+}
+
+function filterStudents() {
+    const studentsSection  = document.getElementById('students');
+    const studentArticles = studentsSection.querySelectorAll('.student');
+
+    const ageFilterSelect = document.getElementById('students-filter-age');
+    const ageFilter = ageFilterSelect.value;
+
+    const groupFilterSelect = document.getElementById('students-filter-group');
+    const groupFilter = groupFilterSelect.value;
+
+    for(let studentArticle of studentArticles) {
+        const studentAge = studentArticle.querySelector('.age').innerHTML;
+        const studentGroup = studentArticle.querySelector('.group').innerHTML;
+        
+        const isCorrectAge = ageFilter == "--" || studentAge == ageFilter;
+        const isCorrectGroup = groupFilter == "--" || studentGroup == groupFilter;
+
+        if(isCorrectAge && isCorrectGroup) {
+            studentArticle.style.display = 'block';
+        } else {
+            studentArticle.style.display = 'none';
+        }
+    }
 }
 
 function showStudents(students) {
