@@ -61,6 +61,6 @@ const testStudent = {
     group: "LO2E-SWD3"
 };
 
-loadStudents();
+// loadStudents();
 
 // showStudent(testStudent);
