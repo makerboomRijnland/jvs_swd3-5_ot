@@ -4,6 +4,7 @@ class Student {
         this.lastName = data.lastName;
         this.name = `${this.initials} ${this.lastName}`;
         this.group = data.group;
+        this.age = data.age;
         this.email =
             `${this.initials}${this.lastName}@mborijnland.nl`.toLowerCase();
         this.avatar = `https://i.pravatar.cc/100?u=${this.email}`;
