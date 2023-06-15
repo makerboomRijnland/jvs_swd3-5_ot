@@ -1,12 +1,14 @@
 [
     {
-        "name": "B. Attyboy",
+        "firstName": "B.",
+        "lastName": "Attyboy",
         "age": 17,
         "group": "LO2E-SWD3"
     },
     {
-        "name": "C. Unning",
+        "firstName": "C.",
+        "lastName": "Unning",
         "age": 18,
-        "group": "LO2E-SWD3"
+        "group": "LO2E-SWD1"
     }
 ]
