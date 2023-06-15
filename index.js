@@ -24,13 +24,52 @@ class Student {
 
         studentsSection.appendChild(this.element);
     }
+
+    show() {
+        this.element.style.display = null;
+    }
+
+    hide() {
+        this.element.style.display = "none";
+    }
 }
 
-const student = new Student({
-    initials: "A.",
-    lastName: "Antonius",
-    age: 15,
-    group: "LO2E-SWD1"
-});
+class StudentList {
+    constructor() {
+        // TODO: get students from JSON!
+        this.students = [];
 
-student.html();
+        fetch("students.json")
+            .then((response) => response.json())
+            .then((data) => this.parse(data));
+
+        const groupFilterSelect = document.getElementById('students-filter-group');
+        groupFilterSelect.addEventListener('change', () => this.filter());
+    }
+
+    parse(data) {
+        for(let row of data) {
+            const student = new Student(row);
+            this.students.push(student);
+            student.html();
+        }
+    }
+
+    filter() {
+        const groupFilterSelect = document.getElementById('students-filter-group');
+        const groupFilter = groupFilterSelect.value;
+
+        for(const student of this.students) {
+            const isCorrectGroup = groupFilter == '--' || student.group == groupFilter;
+            
+            if(isCorrectGroup) {
+                student.show();
+            } else {
+                student.hide();
+            }
+        }
+        // alert('Filter ' + groupFilterSelect.value);
+    }
+}
+
+const studentList = new StudentList();
