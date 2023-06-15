@@ -1,20 +1,43 @@
 
+class Student {
+    constructor(data) {
+        this.initials = data.initials;
+        this.lastName = data.lastName;
+        this.name = `${this.initials} ${this.lastName}`;
+        this.group = data.group;
+        this.email = `${this.initials}${this.lastName}@mborijnland.nl`.toLowerCase();
+        this.avatar = `https://i.pravatar.cc/100?u=${this.email}`;
+    }
 
-function showStudent(student) {
-    const studentsSection  = document.getElementById('students');
-    const studentTemplate = document.getElementById('student-template');
-    const studentArticle = studentTemplate.content.cloneNode(true);
+    html() {
+        const studentsSection  = document.getElementById('students');
+        const studentTemplate = document.getElementById('student-template');
+        const studentArticle = studentTemplate.content.cloneNode(true);
 
-    const studentEmail = `${student.initials}${student.lastName}@mborijnland.nl`;
-    const studentAvatar = `https://i.pravatar.cc/100?u=${studentEmail}`;
+        studentArticle.querySelector('.avatar').src = this.avatar;
+        studentArticle.querySelector('.name').innerHTML = this.name;
+        studentArticle.querySelector('.age').innerHTML = this.age;
+        studentArticle.querySelector('.group').innerHTML = this.group;
 
-    studentArticle.querySelector('.avatar').src = `${studentAvatar}`;
-    studentArticle.querySelector('.name').innerHTML = `${student.initials} ${student.lastName}`;
-    studentArticle.querySelector('.age').innerHTML = student.age;
-    studentArticle.querySelector('.group').innerHTML = student.group;
-
-    studentsSection.appendChild(studentArticle);
+        studentsSection.appendChild(studentArticle);
+    }
 }
+
+// function showStudent(student) {
+//     const studentsSection  = document.getElementById('students');
+//     const studentTemplate = document.getElementById('student-template');
+//     const studentArticle = studentTemplate.content.cloneNode(true);
+
+//     const studentEmail = `${student.initials}${student.lastName}@mborijnland.nl`;
+//     const studentAvatar = `https://i.pravatar.cc/100?u=${studentEmail}`;
+
+//     studentArticle.querySelector('.avatar').src = `${studentAvatar}`;
+//     studentArticle.querySelector('.name').innerHTML = `${student.initials} ${student.lastName}`;
+//     studentArticle.querySelector('.age').innerHTML = student.age;
+//     studentArticle.querySelector('.group').innerHTML = student.group;
+
+//     studentsSection.appendChild(studentArticle);
+// }
 
 function loadStudents() {
     fetch('students.json')
@@ -54,8 +77,10 @@ function filterStudents() {
 }
 
 function showStudents(students) {
+    students = students.map((data) => new Student(data));
+    
     for(let student of students) {
-        showStudent(student);
+        student.html();
     }
 }
 
