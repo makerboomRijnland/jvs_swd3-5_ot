@@ -1,5 +1,11 @@
 [
     {
+        "initials": "A.",
+        "lastName": "Antonius",
+        "age": 15,
+        "group": "LO2E-SWD1"
+    },
+    {
         "initials": "B.",
         "lastName": "Attyboy",
         "age": 17,
@@ -10,5 +16,17 @@
         "lastName": "Unning",
         "age": 18,
         "group": "LO2E-SWD1"
+    },
+    {
+        "initials": "D.",
+        "lastName": "Onut",
+        "age": 19,
+        "group": "LO2E-SWD5"
+    },
+    {
+        "initials": "E.",
+        "lastName": "Ikel",
+        "age": 36,
+        "group": "LO2E-SWD2"
     }
 ]
