@@ -2,30 +2,35 @@
     {
         "initials": "A.",
         "lastName": "Antonius",
+        "age": 15,
         "dateOfBirth": "Thu Jun 15 2008",
         "group": "LO2E-SWD1"
     },
     {
         "initials": "B.",
         "lastName": "Attyboy",
+        "age": 17,
         "dateOfBirth": "Thu Jun 15 2006",
         "group": "LO2E-SWD3"
     },
     {
         "initials": "C.",
         "lastName": "Unning",
+        "age": 18,
         "dateOfBirth": "Thu Jun 15 2005",
         "group": "LO2E-SWD1"
     },
     {
         "initials": "D.",
         "lastName": "Onut",
+        "age": 14,
         "dateOfBirth": "Thu Jun 15 2009",
         "group": "LO2E-SWD5"
     },
     {
         "initials": "E.",
         "lastName": "Ikel",
+        "age": 35,
         "dateOfBirth": "Thu Jun 15 1988",
         "group": "LO2E-SWD2"
     }
