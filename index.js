@@ -5,7 +5,11 @@ function showStudent(student) {
     const studentTemplate = document.getElementById('student-template');
     const studentArticle = studentTemplate.content.cloneNode(true);
 
-    studentArticle.querySelector('.name').innerHTML = student.name;
+    const studentEmail = `${student.initials}${student.lastName}@mborijnland.nl`;
+    const studentAvatar = `https://i.pravatar.cc/100?u=${studentEmail}`;
+
+    studentArticle.querySelector('.avatar').src = `${studentAvatar}`;
+    studentArticle.querySelector('.name').innerHTML = `${student.initials} ${student.lastName}`;
     studentArticle.querySelector('.age').innerHTML = student.age;
     studentArticle.querySelector('.group').innerHTML = student.group;
 
@@ -56,11 +60,12 @@ function showStudents(students) {
 }
 
 const testStudent = {
-    name: "B. Attyboy",
+    initials: "B.",
+    lastName: "Attyboy",
     age: 17,
     group: "LO2E-SWD3"
 };
 
-// loadStudents();
+loadStudents();
 
 // showStudent(testStudent);

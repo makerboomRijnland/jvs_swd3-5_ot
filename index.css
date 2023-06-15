@@ -1,0 +1,20 @@
+#students {
+    width: 600px;
+    margin: 0 auto;
+}
+
+#students .student {
+    border: 1px solid black;
+    border-radius: 0.6em;
+    padding: 0.8em;
+    margin: 0.6em 0;
+}
+
+#students .student img {
+    float: left;
+    margin-right: 1em;
+}
+
+#students .student .name {
+    margin-top: 0;
+}
