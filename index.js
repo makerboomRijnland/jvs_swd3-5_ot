@@ -23,32 +23,31 @@ class Student {
     }
 }
 
-// function showStudent(student) {
-//     const studentsSection  = document.getElementById('students');
-//     const studentTemplate = document.getElementById('student-template');
-//     const studentArticle = studentTemplate.content.cloneNode(true);
+class StudentList {
+    constructor() {
+        this.students = [];
 
-//     const studentEmail = `${student.initials}${student.lastName}@mborijnland.nl`;
-//     const studentAvatar = `https://i.pravatar.cc/100?u=${studentEmail}`;
+        fetch('students.json')
+            .then((response) => response.json())
+            .then((data) => this.parse(data));
+    }
 
-//     studentArticle.querySelector('.avatar').src = `${studentAvatar}`;
-//     studentArticle.querySelector('.name').innerHTML = `${student.initials} ${student.lastName}`;
-//     studentArticle.querySelector('.age').innerHTML = student.age;
-//     studentArticle.querySelector('.group').innerHTML = student.group;
-
-//     studentsSection.appendChild(studentArticle);
-// }
+    parse(students) {
+        this.students = students.map((data) => new Student(data));
+        
+        for(const student of this.students) {
+            student.html();
+        }
+    }
+}
 
 function loadStudents() {
-    fetch('students.json')
-        .then((response) => response.json())
-        .then((data) => showStudents(data));
 
-    const ageFilterSelect = document.getElementById('students-filter-age');
-    const groupFilterSelect = document.getElementById('students-filter-group');
+    // const ageFilterSelect = document.getElementById('students-filter-age');
+    // const groupFilterSelect = document.getElementById('students-filter-group');
 
-    ageFilterSelect.addEventListener('change', filterStudents);
-    groupFilterSelect.addEventListener('change', filterStudents);
+    // ageFilterSelect.addEventListener('change', filterStudents);
+    // groupFilterSelect.addEventListener('change', filterStudents);
 }
 
 function filterStudents() {
@@ -76,21 +75,4 @@ function filterStudents() {
     }
 }
 
-function showStudents(students) {
-    students = students.map((data) => new Student(data));
-    
-    for(let student of students) {
-        student.html();
-    }
-}
-
-const testStudent = {
-    initials: "B.",
-    lastName: "Attyboy",
-    age: 17,
-    group: "LO2E-SWD3"
-};
-
-loadStudents();
-
-// showStudent(testStudent);
+const studentList = new StudentList();
