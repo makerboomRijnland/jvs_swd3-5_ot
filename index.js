@@ -4,10 +4,14 @@ class Student {
         this.lastName = data.lastName;
         this.name = `${this.initials} ${this.lastName}`;
         this.group = data.group;
-        this.age = data.age;
+        this.dateOfBirth = new Date(data.dateOfBirth);
         this.email =
             `${this.initials}${this.lastName}@mborijnland.nl`.toLowerCase();
         this.avatar = `https://i.pravatar.cc/100?u=${this.email}`;
+
+        const ageMs = Date.now() - this.dateOfBirth.getTime();
+        const ageDate = new Date(ageMs); 
+        this.age = Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 
     html() {
@@ -19,7 +23,7 @@ class Student {
 
         studentArticle.querySelector(".avatar").src = this.avatar;
         studentArticle.querySelector(".name").innerHTML = this.name;
-        studentArticle.querySelector(".age").innerHTML = this.age;
+        studentArticle.querySelector(".age").innerHTML = `${this.age} jaar`;
         studentArticle.querySelector(".group").innerHTML = this.group;
 
         this.element = studentArticle;
